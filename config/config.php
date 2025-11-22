@@ -22,9 +22,9 @@ if ($is_production) {
 
 // Configuración de Base de Datos
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'inventario_multisucursal');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_NAME', 'janetzy_inventarios');
+define('DB_USER', 'janetzy_inventarios');
+define('DB_PASS', 'Danjohn007!');
 define('DB_CHARSET', 'utf8mb4');
 
 // Detección automática de URL Base
