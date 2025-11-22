@@ -1,0 +1,45 @@
+# Sistema de Inventario Multisucursal - GitIgnore
+
+# Archivos de configuración sensibles
+config/database.php
+
+# Archivos subidos por usuarios
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# Archivos temporales
+*.tmp
+*.temp
+*.cache
+/tmp/*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Composer (si se usa en el futuro)
+/vendor/
+composer.lock
+
+# Node modules (si se usa en el futuro)
+node_modules/
+package-lock.json
+
+# Sistema operativo
+Thumbs.db
+.DS_Store
+
+# Backups de base de datos
+*.sql.backup
+backups/
+
+# Archivos de sesión PHP
+sessions/
