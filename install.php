@@ -26,10 +26,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Leer el archivo schema.sql
         $schema = file_get_contents(CONFIG_PATH . '/schema.sql');
         
+        // Remover comentarios de línea completa (-- al inicio)
+        $lines = explode("\n", $schema);
+        $cleanedLines = array_filter($lines, function($line) {
+            $trimmed = trim($line);
+            return !empty($trimmed) && strpos($trimmed, '--') !== 0;
+        });
+        $cleanedSchema = implode("\n", $cleanedLines);
+        
         // Dividir en sentencias individuales
         $statements = array_filter(
-            array_map('trim', explode(';', $schema)),
-            function($stmt) { return !empty($stmt) && strpos($stmt, '--') !== 0; }
+            array_map('trim', explode(';', $cleanedSchema)),
+            function($stmt) { return !empty($stmt); }
         );
         
         // Ejecutar cada sentencia

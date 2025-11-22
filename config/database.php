@@ -61,4 +61,11 @@ class Database {
     public function __wakeup() {
         throw new Exception("No se puede deserializar un singleton.");
     }
+    
+    /**
+     * Previene la serialización del objeto
+     */
+    public function __sleep() {
+        throw new Exception("No se puede serializar un singleton.");
+    }
 }

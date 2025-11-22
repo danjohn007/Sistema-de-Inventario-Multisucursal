@@ -111,9 +111,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </form>
         
-        <p style="text-align: center; margin-top: 20px;">
-            <small>Usuario de prueba: admin@sistema.com / admin123</small>
-        </p>
+        <?php if (APP_ENV === 'development'): ?>
+            <p style="text-align: center; margin-top: 20px;">
+                <small>Usuario de prueba: admin@sistema.com / admin123</small>
+            </p>
+        <?php endif; ?>
         
         <p style="text-align: center; margin-top: 10px;">
             <a href="../../index.php">← Volver al inicio</a>
