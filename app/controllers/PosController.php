@@ -41,8 +41,18 @@ class PosController extends Controller {
         try {
             $data = json_decode(file_get_contents('php://input'), true);
             
-            if (empty($data['items']) || count($data['items']) === 0) {
+            // Validate JSON data
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw new Exception('Datos JSON inválidos');
+            }
+            
+            if (!is_array($data) || empty($data['items']) || !is_array($data['items'])) {
                 throw new Exception('No hay productos en la venta');
+            }
+            
+            // Validate required fields
+            if (!isset($data['subtotal']) || !isset($data['total']) || !isset($data['metodo_pago'])) {
+                throw new Exception('Datos incompletos');
             }
             
             $saleModel = $this->model('Sale');

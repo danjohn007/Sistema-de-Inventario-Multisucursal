@@ -160,7 +160,7 @@ class Sale {
             // Agregar puntos de fidelidad al cliente
             if (!empty($data['cliente_id'])) {
                 $customerModel = new Customer();
-                $points = floor($data['total'] / 100); // 1 punto por cada $100
+                $points = floor($data['total'] / LOYALTY_CURRENCY_UNIT) * LOYALTY_POINTS_PER_CURRENCY;
                 $customerModel->addPoints($data['cliente_id'], $points);
             }
             
@@ -209,7 +209,7 @@ class Sale {
             // Restar puntos de fidelidad
             if (!empty($sale['cliente_id'])) {
                 $customerModel = new Customer();
-                $points = floor($sale['total'] / 100);
+                $points = floor($sale['total'] / LOYALTY_CURRENCY_UNIT) * LOYALTY_POINTS_PER_CURRENCY;
                 $customerModel->addPoints($sale['cliente_id'], -$points);
             }
             
