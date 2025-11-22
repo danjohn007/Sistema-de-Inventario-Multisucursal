@@ -1,0 +1,31 @@
+# Sistema de Inventario Multisucursal
+# Configuración de URLs amigables
+
+# Habilitar RewriteEngine
+RewriteEngine On
+
+# Establecer la base para reescritura
+RewriteBase /
+
+# Si es un archivo o directorio real, no reescribir
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Reescribir todas las peticiones a index.php
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Configuración de seguridad
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sql)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Prevenir listado de directorios
+Options -Indexes
+
+# Configuración de PHP
+php_flag display_errors On
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+php_value max_execution_time 300
+php_value memory_limit 256M
